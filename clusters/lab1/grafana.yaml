@@ -7,6 +7,7 @@ spec:
   force: false
   dependsOn:
     - name: grafana-operator # Depends on the grafana-operator being synced
+    - name: external-secrets # Depends on the external-secrets being synced
   healthChecks: # Check that grafana-deployment comes up
     - apiVersion: apps/v1
       kind: Deployment
@@ -14,7 +15,7 @@ spec:
       namespace: grafana
   interval: 10m0s
   targetNamespace: grafana
-  path: ./clusters/my-cluster/grafana
+  path: ./clusters/lab1/grafana
   prune: true
   sourceRef:
     kind: GitRepository
