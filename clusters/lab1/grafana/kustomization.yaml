@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
   - grafana.yaml
   - grafana-secrets.yaml
+spec:
+  dependsOn:
+    - name: external-secrets
