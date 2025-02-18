@@ -7,7 +7,7 @@ spec:
   force: false
   dependsOn:
     - name: grafana-operator # Depends on the grafana-operator being synced
-    - name: external-secrets # Depends on the external-secrets being synced
+    - name: infra-controllers
   healthChecks: # Check that grafana-deployment comes up
     - apiVersion: apps/v1
       kind: Deployment
