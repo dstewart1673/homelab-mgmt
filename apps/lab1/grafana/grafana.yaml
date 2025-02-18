@@ -22,9 +22,9 @@ spec:
                   valueFrom:
                     secretKeyRef:
                       key: grafana_admin_user
-                      name: credentials
+                      name: grafana-secrets
                 - name: GF_SECURITY_ADMIN_PASSWORD
                   valueFrom:
                     secretKeyRef:
                       key: grafana_admin_password
-                      name: credentials
+                      name: grafana-secrets
