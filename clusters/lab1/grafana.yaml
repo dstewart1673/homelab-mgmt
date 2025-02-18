@@ -6,7 +6,7 @@ metadata:
 spec:
   force: false
   dependsOn:
-    - name: grafana-operator # Depends on the grafana-operator being synced
+    - name: grafana-operator
     - name: infra-controllers
   healthChecks: # Check that grafana-deployment comes up
     - apiVersion: apps/v1
