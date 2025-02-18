@@ -1,4 +1,4 @@
-apiVersion: source.toolkit.fluxcd.io/v1
+apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
   name: grafana-operator
@@ -7,9 +7,9 @@ spec:
   interval: 10m
   url: oci://ghcr.io/grafana/kustomize/grafana-operator
   ref:
-    tag: v5.16.0
+    tag: v5.0.0-rc3
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: grafana-operator
@@ -19,7 +19,7 @@ spec:
   targetNamespace: grafana
   images:
     - name: ghcr.io/grafana/grafana-operator
-      newTag: v5.16.0
+      newTag: v5.0.0-rc3
   prune: true
   sourceRef:
     kind: OCIRepository
