@@ -10,6 +10,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/lab1/controllers
+  path: ./infrastructure/lab1/controllers/external-secrets
   prune: true
   wait: true
