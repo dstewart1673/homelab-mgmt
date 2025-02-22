@@ -33,11 +33,10 @@ spec:
       rules:
         - http:
             paths:
-              - path: /grafana
+              - path: /
                 pathType: Prefix
-                # Redirect traffic to service on port 80
                 backend:
                   service:
                     name: grafana-service
                     port:
-                      number: 80
+                      number: 3000
