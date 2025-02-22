@@ -28,3 +28,16 @@ spec:
                     secretKeyRef:
                       key: grafana_admin_password
                       name: grafana-secrets
+  ingress:
+    spec:
+      rules:
+        - http:
+            paths:
+              - path: /grafana
+                pathType: Prefix
+                # Redirect traffic to service on port 80
+                backend:
+                  service:
+                    name: grafana-service
+                    port:
+                      number: 80
