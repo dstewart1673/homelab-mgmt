@@ -59,9 +59,9 @@ spec:
           # AWS region where the S3 bucket is located
           region: us-west-2
           # AWS secret access key
-          secretAccessKey: secret-access-key
+          secretAccessKey: aws-secret-access-key
           # AWS access key ID
-          accessKeyId: access-key
+          accessKeyId: aws-access-key
           # AWS signature version (e.g., v2 or v4)
           signatureVersion: v4
           # Forces the path style for S3 (true/false)
