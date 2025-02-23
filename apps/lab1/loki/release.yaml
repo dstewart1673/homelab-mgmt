@@ -4,7 +4,7 @@ metadata:
   name: loki
 spec:
   releaseName: loki-deployment
-  interval: 5m
+  interval: 10m
   chart:
     spec:
       version: "6.x"
