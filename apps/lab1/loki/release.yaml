@@ -38,11 +38,6 @@ spec:
             index:
               prefix: loki_index_
               period: 24h
-      storage_config:
-        aws:
-          region: us-west-2
-          bucketnames: loki_chunk_bucket
-          s3forcepathstyle: false
       pattern_ingester:
         enabled: true
       ruler:
