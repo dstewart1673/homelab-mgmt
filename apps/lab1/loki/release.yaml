@@ -38,12 +38,40 @@ spec:
             index:
               prefix: loki_index_
               period: 24h
+        storage_config:
+          aws:
+            region: us-west-2
+            bucketnames: loki_chunk_bucket
+            s3forcepathstyle: false
       pattern_ingester:
         enabled: true
       ruler:
         enable_api: true
+      storage:
+        type: s3
+        bucketNames:
+            chunks: loki_chunk_bucket
+            ruler: loki_ruler_bucket
+            admin: loki_admin_bucket
+        s3:
+          # AWS endpoint URL
+          endpoint: s3.us-west-2.amazonaws.com
+          # AWS region where the S3 bucket is located
+          region: us-west-2
+          # AWS secret access key
+          secretAccessKey: secret-access-key
+          # AWS access key ID
+          accessKeyId: access-key
+          # AWS signature version (e.g., v2 or v4)
+          signatureVersion: v4
+          # Forces the path style for S3 (true/false)
+          s3ForcePathStyle: false
+          # Allows insecure (HTTP) connections (true/false)
+          insecure: false
+          # HTTP configuration settings
+          http_config: {}
     minio:
-      enabled: true
+      enabled: false
     lokiCanary:
       enabled: false
     deploymentMode: SingleBinary
