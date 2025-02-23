@@ -42,7 +42,8 @@ spec:
       storage_config:
         s3:
           bucket_name: "${LOKI-S3-CHUNK-BUCKET}"
-          region: "us-west-2"
+          region: us-west-2
+          s3ForcePathStyle: true
       pattern_ingester:
         enabled: true
       ruler:
@@ -54,9 +55,9 @@ spec:
             ruler: "${LOKI-S3-RULER-BUCKET}"
         s3:
           # AWS endpoint URL
-          endpoint: "s3.us-west-2.amazonaws.com"
+          endpoint: s3.us-west-2.amazonaws.com
           # AWS region where the S3 bucket is located
-          region: "us-west-2"
+          region: us-west-2
           # AWS secret access key
           secretAccessKey: "${LOKI-S3-SECRETACCESSKEY}"
           # AWS access key ID
