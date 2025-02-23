@@ -4,6 +4,7 @@ metadata:
   name: loki
 spec:
   releaseName: loki-deployment
+  targetNamespace: grafana
   interval: 10m
   chart:
     spec:
@@ -20,6 +21,32 @@ spec:
       enabled: false
     test:
       enabled: false
+    backend:
+      extraArgs:
+        - '-config.expand-env=true'
+      extraEnv:
+        - name: LOKI-S3-CHUNK-BUCKET 
+          valueFrom:
+            secretKeyRef:
+              name: loki-secrets
+              key: loki_chunk_bucket
+        - name: LOKI-S3-RULER-BUCKET 
+          valueFrom:
+            secretKeyRef:
+              name: loki-secrets
+              key: loki_ruler_bucket
+        - name: LOKI-S3-ACCESKEYID 
+          valueFrom:
+            secretKeyRef:
+              name: awssm-secret
+              key: access-key
+              namespace: default
+        - name: LOKI-S3-SECRETACCESSKEY
+          valueFrom:
+            secretKeyRef:
+              name: awssm-secret
+              key: secret-access-key
+              namespace: default
     loki:
       auth_enabled: false
       limits_config:
@@ -45,18 +72,17 @@ spec:
       storage:
         type: s3
         bucketNames:
-            chunks: loki_chunk_bucket
-            ruler: loki_ruler_bucket
-            admin: loki_admin_bucket
+            chunks: "${LOKI-S3-CHUNK-BUCKET}"
+            ruler: "${LOKI-S3-RULER-BUCKET}"
         s3:
           # AWS endpoint URL
-          endpoint: s3.us-west-2.amazonaws.com
+          endpoint: "s3.us-west-2.amazonaws.com"
           # AWS region where the S3 bucket is located
-          region: us-west-2
+          region: "us-west-2"
           # AWS secret access key
-          secretAccessKey: aws-secret-access-key
+          secretAccessKey: "${LOKI-S3-SECRETACCESSKEY}"
           # AWS access key ID
-          accessKeyId: aws-access-key
+          accessKeyId: "${LOKI-S3-ACCESKEYID}"
           # AWS signature version (e.g., v2 or v4)
           signatureVersion: v4
           # Forces the path style for S3 (true/false)
