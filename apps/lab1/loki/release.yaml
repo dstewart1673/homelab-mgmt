@@ -43,7 +43,6 @@ spec:
         aws:
           bucket_name: "${LOKI-S3-CHUNK-BUCKET}"
           region: us-west-2
-          s3ForcePathStyle: true
       pattern_ingester:
         enabled: true
       ruler:
