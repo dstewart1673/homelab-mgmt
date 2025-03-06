@@ -5,7 +5,7 @@ metadata:
 spec:
   releaseName: loki-deployment
   targetNamespace: grafana
-  interval: 15sm
+  interval: 15m
   chart:
     spec:
       version: "6.x"
