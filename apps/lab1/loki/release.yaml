@@ -55,8 +55,8 @@ spec:
       storage:
         type: s3
         bucketNames:
-            chunks: "${LOKI-S3-CHUNK-BUCKET}"
-            ruler: "${LOKI-S3-RULER-BUCKET}"
+            chunks: ${LOKI-S3-CHUNK-BUCKET}
+            ruler: ${LOKI-S3-RULER-BUCKET}
         s3:
           # AWS region where the S3 bucket is located
           region: us-west-2
