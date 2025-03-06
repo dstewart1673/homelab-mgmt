@@ -3,9 +3,6 @@ kind: HelmRelease
 metadata:
   name: loki
 spec:
-  env:
-    - name: POD_IP
-
   releaseName: loki-deployment
   targetNamespace: grafana
   interval: 15m
