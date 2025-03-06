@@ -3,6 +3,9 @@ kind: HelmRelease
 metadata:
   name: loki
 spec:
+  env:
+    - name: POD_IP
+
   releaseName: loki-deployment
   targetNamespace: grafana
   interval: 15m
@@ -46,6 +49,9 @@ spec:
         enabled: true
       ruler:
         enable_api: true
+      extraMemberlistConfig:
+        bind_addr:
+          - ${MY_POD_IP}
       storage:
         type: s3
         bucketNames:
@@ -80,6 +86,10 @@ spec:
       extraArgs:
         - '-config.expand-env=true'
       extraEnv:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         - name: LOKI-S3-CHUNK-BUCKET 
           valueFrom:
             secretKeyRef:
