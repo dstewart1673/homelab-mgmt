@@ -27,7 +27,6 @@ spec:
         allow_structured_metadata: true
         retention_period: 24h
         volume_enabled: true
-      # https://grafana.com/docs/loki/latest/setup/install/helm/install-monolithic/
       commonConfig:
         replication_factor: 1
       schemaConfig:
@@ -67,8 +66,6 @@ spec:
           s3ForcePathStyle: false
           # Allows insecure (HTTP) connections (true/false)
           insecure: false
-          # HTTP configuration settings
-          http_config: {}
     minio:
       enabled: false
     lokiCanary:
