@@ -76,10 +76,8 @@ spec:
     deploymentMode: SingleBinary
     singleBinary:
       replicas: 1
-    # Zero out replica counts of other deployment modes
-    backend:
       extraArgs:
-        - '-config.expand-env=true'
+        - -config.expand-env=true
       extraEnv:
         - name: MY_POD_IP
           valueFrom:
@@ -107,6 +105,8 @@ spec:
               name: awssm-secret
               key: secret-access-key
               namespace: default
+    # Zero out replica counts of other deployment modes
+    backend:
       replicas: 0
     read:
       replicas: 0
