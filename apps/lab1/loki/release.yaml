@@ -78,10 +78,6 @@ spec:
       extraArgs:
         - config.expand-env=true
       extraEnv:
-        - name: MY_POD_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.podIP
         - name: LOKI-S3-CHUNK-BUCKET 
           valueFrom:
             secretKeyRef:
