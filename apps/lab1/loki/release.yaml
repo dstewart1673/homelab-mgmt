@@ -75,7 +75,7 @@ spec:
     singleBinary:
       replicas: 1
       extraArgs:
-        - -config.expand-env=true
+        - config.expand-env=true
       extraEnv:
         - name: MY_POD_IP
           valueFrom:
