@@ -67,6 +67,10 @@ spec:
           s3ForcePathStyle: true
           # Allows insecure (HTTP) connections (true/false)
           insecure: false
+      ring:
+        kvstore:
+          store: inmemory
+        replication_factor: 1
     minio:
       enabled: false
     lokiCanary:
