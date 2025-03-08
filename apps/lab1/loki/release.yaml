@@ -8,7 +8,6 @@ spec:
   interval: 15m
   chart:
     spec:
-      version: "6.x"
       chart: loki
       sourceRef:
         kind: HelmRepository
@@ -45,19 +44,23 @@ spec:
         enabled: true
       ruler:
         enable_api: true
+      ingester:
+        chunk_encoder: snappy
+      querier:
+        max_concurrent: 1
       storage:
         type: s3
         bucketNames:
-            chunks: "${LOKI-S3-CHUNK-BUCKET}"
-            ruler: "${LOKI-S3-RULER-BUCKET}"
+            chunks: ${LOKI-S3-CHUNK-BUCKET}
+            ruler: ${LOKI-S3-RULER-BUCKET}
         s3:
           # AWS region where the S3 bucket is located
           region: us-west-2
           endpoint: s3.us-west-2.amazonaws.com
           # AWS secret access key
-          secretAccessKey: "${LOKI-S3-SECRETACCESSKEY}"
+          secretAccessKey: ${LOKI-S3-SECRETACCESSKEY}
           # AWS access key ID
-          accessKeyId: "${LOKI-S3-ACCESKEYID}"
+          accessKeyId: ${LOKI-S3-ACCESKEYID}
           # AWS signature version (e.g., v2 or v4)
           signatureVersion: v4
           # Forces the path style for S3 (true/false)
