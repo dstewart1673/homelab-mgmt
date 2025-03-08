@@ -44,8 +44,6 @@ spec:
         enabled: true
       ruler:
         enable_api: true
-      ingester:
-        chunk_encoder: snappy
       querier:
         max_concurrent: 1
       storage:
