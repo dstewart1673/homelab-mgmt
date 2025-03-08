@@ -45,9 +45,6 @@ spec:
         enabled: true
       ruler:
         enable_api: true
-      extraMemberlistConfig:
-        bind_addr:
-          - ${MY_POD_IP}
       storage:
         type: s3
         bucketNames:
