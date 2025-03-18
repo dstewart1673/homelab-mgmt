@@ -55,10 +55,6 @@ spec:
           # AWS region where the S3 bucket is located
           region: us-west-2
           endpoint: s3.us-west-2.amazonaws.com
-          # AWS secret access key
-          secretAccessKey: "${LOKI-S3-SECRETACCESSKEY}"
-          # AWS access key ID
-          accessKeyId: "${LOKI-S3-ACCESKEYID}"
           # AWS signature version (e.g., v2 or v4)
           signatureVersion: v4
           # Forces the path style for S3 (true/false)
@@ -76,31 +72,6 @@ spec:
     deploymentMode: SingleBinary
     singleBinary:
       replicas: 1
-      extraArgs:
-        - config.expand-env=true
-      extraEnv:
-        - name: LOKI-S3-CHUNK-BUCKET 
-          valueFrom:
-            secretKeyRef:
-              name: loki-secrets
-              key: loki_chunk_bucket
-        - name: LOKI-S3-RULER-BUCKET 
-          valueFrom:
-            secretKeyRef:
-              name: loki-secrets
-              key: loki_ruler_bucket
-        - name: LOKI-S3-ACCESKEYID 
-          valueFrom:
-            secretKeyRef:
-              name: awssm-secret
-              key: access-key
-              namespace: default
-        - name: LOKI-S3-SECRETACCESSKEY
-          valueFrom:
-            secretKeyRef:
-              name: awssm-secret
-              key: secret-access-key
-              namespace: default
     # Zero out replica counts of other deployment modes
     backend:
       replicas: 0
@@ -126,3 +97,14 @@ spec:
       replicas: 0
     bloomGateway:
       replicas: 0
+  valuesFrom:
+    - targetPath: loki.storage.s3.accessKeyId
+      kind: Secret
+      name: awssm-secret
+      valuesKey: access-key
+      namespace: default
+    - targetPath: loki.storage.s3.secretAccessKey
+      kind: Secret
+      name: awssm-secret
+      valuesKey: secret-access-key
+      namespace: default
