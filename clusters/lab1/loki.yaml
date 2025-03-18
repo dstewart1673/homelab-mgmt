@@ -10,7 +10,7 @@ spec:
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
-      name: loki-deployment
+      name: loki-deployment-gateway
       namespace: grafana
   interval: 10m0s
   targetNamespace: grafana
