@@ -102,9 +102,7 @@ spec:
       kind: Secret
       name: awssm-secret
       valuesKey: access-key
-      namespace: default
     - targetPath: loki.storage.s3.secretAccessKey
       kind: Secret
       name: awssm-secret
       valuesKey: secret-access-key
-      namespace: default
