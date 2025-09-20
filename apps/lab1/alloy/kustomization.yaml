@@ -4,4 +4,9 @@ namespace: grafana
 resources:
   - repository.yaml
   - release.yaml
-  - config.alloy
+configMapGenerator:
+  - name: alloy
+    files:
+      - config.alloy
+    options:
+      disableNameSuffixHash: true
