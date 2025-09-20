@@ -30,4 +30,3 @@ spec:
       configMap:
         create: false
         name: alloy
-        key: config.alloy
