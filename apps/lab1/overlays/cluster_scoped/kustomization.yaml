@@ -1,4 +1,4 @@
 namespace: grafana
 
 resources:
-  - ./../../grafana_operator
+  - ./../../grafana-operator
