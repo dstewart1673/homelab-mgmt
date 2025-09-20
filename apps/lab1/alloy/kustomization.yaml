@@ -4,4 +4,3 @@ namespace: grafana
 resources:
   - repository.yaml
   - release.yaml
-  - secrets.yaml
