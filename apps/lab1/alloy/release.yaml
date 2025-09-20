@@ -28,5 +28,6 @@ spec:
           targetPort: 4318
           protocol: "TCP"
       configMap:
-        create: true
+        create: false
+        name: alloy
         key: config.alloy
