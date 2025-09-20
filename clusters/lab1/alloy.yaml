@@ -1,0 +1,21 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: alloy
+  namespace: flux-system
+spec:
+  force: false
+  dependsOn:
+    - name: grafana
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: alloy-gateway
+      namespace: grafana
+  interval: 10m0s
+  targetNamespace: grafana
+  path: ./apps/lab1/alloy
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
