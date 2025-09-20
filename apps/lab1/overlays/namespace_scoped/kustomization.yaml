@@ -1,7 +1,7 @@
 namespace: grafana
 
 resources:
-  - ./../../grafana_operator
+  - ./../../grafana-operator
 
 patches:
   - path: deployment.yaml
