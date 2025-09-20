@@ -7,7 +7,7 @@ spec:
   interval: 15m
   url: oci://ghcr.io/grafana/kustomize/grafana-operator
   ref:
-    tag: v5.15.0
+    tag: v5.19.0
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -19,7 +19,7 @@ spec:
   targetNamespace: grafana
   images:
     - name: ghcr.io/grafana/grafana-operator
-      newTag: v5.15.0
+      newTag: v5.19.0
   prune: true
   sourceRef:
     kind: OCIRepository
